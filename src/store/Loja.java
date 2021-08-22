@@ -1,14 +1,18 @@
 package store;
 import java.util.ArrayList;
+
+import exceptions.ProdutoExisteException;
+import repositorios.ContasArrayList;
+import repositorios.ProdutosArrayList;
+
 import java.io.*;
 import java.io.File;
 
 public class Loja {
-	public ArrayList<Produto> produtos;
-	private ArrayList<Cliente> clientes;
+	private ProdutosArrayList produtos = new ProdutosArrayList();
+	private ContasArrayList clientes = new ContasArrayList();
 	
 	Loja() {
-		this.produtos = new ArrayList<Produto>();
 		try {
 			System.out.println("lendo arquivos...");
 			this.lerArquivo("/src/items");
@@ -19,7 +23,7 @@ public class Loja {
 		}
 	}
 	
-	void lerArquivo(String caminho) throws Exception {
+	private void lerArquivo(String caminho) throws Exception {
 		ArrayList<String> data = new ArrayList<String>();
 		String filePath = new File("").getAbsolutePath();
 		int caracter;
@@ -45,16 +49,20 @@ public class Loja {
 			
 			fr.close();
 		 }
-	}
+	}	
 	
-		
-	
-	void addProduto(ArrayList<String> data) {
-		Produto novoP = new Produto(
+	private void addProduto(ArrayList<String> data) {
+		Produto produto = new Produto(
 				data.get(0), data.get(1),
 				Float.parseFloat(data.get(2)),
 				Integer.parseInt(data.get(3))
 		);
-		this.produtos.add(novoP);
+
+		try {
+			this.produtos.adicionaProduto(produto);
+		}
+		catch (ProdutoExisteException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 }

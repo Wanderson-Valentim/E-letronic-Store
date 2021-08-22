@@ -1,34 +1,63 @@
 package store;
 
-public class Conta {
-	private String nomeUsuario;
+public abstract class Conta {
 	private String nome;
 	private String sobrenome;
 	private String email;
 	private String senha;
 	private String endereco;
+	private boolean ehGerente;
 	
-	Conta(String[] data){
-		this.nomeUsuario = data[0];
-		this.nome = data[1];
-		this.sobrenome = data[2];
-		this.email = data[3];
-		this.senha = data[4];
-		this.endereco = data[5];
+	Conta(String[] data, boolean tipo){
+		this.nome = data[0];
+		this.sobrenome = data[1];
+		this.email = data[2];
+		this.senha = data[3];
+		this.endereco = data[4];
+		this.ehGerente = tipo;
+	}
+
+	public boolean ehEssaConta(String usuario, String senha) {
+		return ((usuario.equals(this.email)) && senha.equals(this.senha));
 	}
 	
-	boolean ehEssaConta(String usuario, String senha) {
-		return (
-				(usuario.equals(this.nomeUsuario) || usuario.equals(this.email))
-				&& senha.equals(this.senha)
-		);
+	public boolean getTipoConta(){
+		return this.ehGerente;
 	}
-	
-	public String pegarNome() {
+
+	public String getNome() {
 		return this.nome;
 	}
 	
-	public String pegarSobrenome() {
+	public String getSobrenome() {
 		return this.sobrenome;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public String getEndereco() {
+		return this.endereco;
+	}
+	
+	public void setNome(String novoNome) {
+		this.nome = novoNome;
+	}
+	
+	public void setSobrenome(String novoSobrenome) {
+		this.sobrenome = novoSobrenome ;
+	}
+
+	public void setEmail(String novoEmail) {
+		this.email = novoEmail;
+	}
+	
+	public void setEndereco(String novoEndereco) {
+		this.endereco = novoEndereco;
+	}
+
+	public void setSenha(String novaSenha) {
+		this.senha = novaSenha;
 	}
 }

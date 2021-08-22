@@ -13,27 +13,27 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
-	String acessarNome(){
+	public String getNome(){
 		return this.nome;
 	}
 	
-	String acessarCategoria(){
+	public String getCategoria(){
 		return this.categoria;
 	}
 	
-	float acessarPreco(){
+	public float getPreco(){
 		return this.preco;
 	}
 	
-	void inserirProduto(int qtd){
+	public void insereProduto(int qtd){
 		this.quantidade += qtd;
 	}
 	
-	void removerProduto(int qtd){
+	public void removeProduto(int qtd){
 		this.quantidade -= qtd;
 	}
 	
-	void alterarPreco(int novoPreco){
+	public void setPreco(int novoPreco){
 		this.preco = novoPreco;
 	}
 }
