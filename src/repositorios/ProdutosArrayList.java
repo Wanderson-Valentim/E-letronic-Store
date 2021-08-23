@@ -10,6 +10,11 @@ public class ProdutosArrayList {
     private ArrayList<Produto> produtos;
     private int index;
 
+    public ProdutosArrayList(){
+        produtos = new ArrayList<Produto>();
+        index = 0;
+    }
+
     private boolean verificaExistencia(String nome){
         for(int i=0; i < this.produtos.size(); i++){
             String produto = this.produtos.get(i).getNome();
@@ -43,7 +48,8 @@ public class ProdutosArrayList {
         }
     }
 
-    public void atualizaProduto(Produto produto) throws ProdutoInexistenteException{
+    //Não implementada, pq n sei se precisa
+    /*public void atualizaProduto(Produto produto) throws ProdutoInexistenteException{
         boolean produtoExiste = verificaExistencia(produto.getNome());
 
         if(produtoExiste){
@@ -52,7 +58,7 @@ public class ProdutosArrayList {
         else{
             throw new ProdutoInexistenteException();
         }
-    }
+    }*/
 
     Produto consultaProduto(String usuario) throws ProdutoInexistenteException{
         boolean produtoExiste = verificaExistencia(usuario);

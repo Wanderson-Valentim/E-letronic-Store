@@ -1,24 +1,29 @@
 package store;
 
+import repositorios.ProdutosArrayList;
+import exceptions.ProdutoExisteException;
+import exceptions.ProdutoInexistenteException;
+
 public class ContaGerente extends Conta{
     
-    ContaGerente(String[] data){
+    public ContaGerente(String[] data){
         super(data, true);
     }
 
-    void cadastraProduto(){
- 
+    public void cadastraProduto(String nome, String categoria, float preco, int quantidade, ProdutosArrayList repositorio) throws ProdutoExisteException{
+        Produto produto = new Produto(nome, categoria, preco, quantidade);
+        repositorio.adicionaProduto(produto);
     }
 
-    void aumentaEstoque(){
-
+    public void removeProduto(Produto produto, ProdutosArrayList repositorio) throws ProdutoInexistenteException{
+        repositorio.removeProduto(produto);
     }
 
-    void editaPreco(){
-
+    public void aumentaEstoque(Produto produto, int quantidade){
+        produto.insereEstoque(quantidade);
     }
 
-    void removeProduto(){
-
+    public void editaPreco(Produto produto, int novoPreco){
+        produto.setPreco(novoPreco);
     }
 }

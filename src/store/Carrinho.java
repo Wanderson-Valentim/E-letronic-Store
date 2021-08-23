@@ -2,23 +2,36 @@ package store;
 
 import java.util.ArrayList;
 
+import exceptions.ProdutoInexistenteException;
+
 public class Carrinho {
     private ArrayList<Produto> produtos;
     private float precoTotal;
 
-    ArrayList<Produto> getListaProdutos(){
+    public Carrinho(){
+        produtos = new ArrayList<Produto>();
+        precoTotal = 0;
+    }
+
+    public ArrayList<Produto> getListaProdutos(){
         return this.produtos;
     }
 
-    void adicionaProduto(){
-        
+    //PRECISA SER AJUSTADA
+    public void adicionaProduto(Produto produto){
+        produtos.add(produto);
     }
 
-    void removeProduto(){
-
+    public void removeProduto(Produto produto) throws ProdutoInexistenteException{
+        if(produtos.contains(produto)){
+            produtos.remove(produto);
+        }
+        else{
+            throw new ProdutoInexistenteException();
+        }
     }
 
-    float getTotal(){
+    public float getTotal(){
         return this.precoTotal;
     }
 }

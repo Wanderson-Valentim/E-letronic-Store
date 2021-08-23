@@ -1,37 +1,40 @@
 package store;
 
+import exceptions.ProdutoInexistenteException;
+
 public class ContaCliente extends Conta{
-    public Carrinho carrinho;
+    private Carrinho carrinho;
 
-    ContaCliente(String[] data){
+    public ContaCliente(String[] data){
         super(data, false);
+        carrinho = new Carrinho();
     }
 
-    void adicionaProdutoCarrinho(){
-
+    public Carrinho getCarrinho(){
+        return this.carrinho;
     }
 
-    void removeProdutoCarrinho(){
-
+    public void adicionaProdutoCarrinho(Produto produto){
+        carrinho.adicionaProduto(produto);
     }
 
-    void finalizaCompra(){
-
+    public void removeProdutoCarrinho(Produto produto) throws ProdutoInexistenteException{
+        carrinho.removeProduto(produto);
     }
 
-    void atualizaEmail(){
-        
+    public void finalizaCompra(){
+        //ainda n sei como fzr
     }
 
-    void atualizaSenha(){
-
+    public void atualizaEmail(String novoEmail){
+        this.setEmail(novoEmail);
     }
 
-    void atualizaEndereco(){
-
+    public  void atualizaSenha(String novoSenha){
+        this.setSenha(novoSenha);
     }
 
-    void removeConta(){
-        
+    public void atualizaEndereco(String novoEndereco){
+        this.setEndereco(novoEndereco);
     }
 }

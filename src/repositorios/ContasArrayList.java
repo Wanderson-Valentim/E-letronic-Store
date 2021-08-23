@@ -10,6 +10,11 @@ public class ContasArrayList {
     private ArrayList<Conta> contas;
     private int index;
 
+    public ContasArrayList(){
+        contas= new ArrayList<Conta>();
+        index = 0;
+    }
+
     private boolean verificaExistencia(String usuario){
         for(int i=0; i < this.contas.size(); i++){
             String email = this.contas.get(i).getEmail();
@@ -43,7 +48,8 @@ public class ContasArrayList {
         }
     }
 
-    public void atualizaConta(Conta conta) throws ContaInexistenteException{
+    //Não implementada, pq n sei se precisa
+    /*public void atualizaConta(Conta conta) throws ContaInexistenteException{
         boolean contaExiste = verificaExistencia(conta.getEmail());
 
         if(contaExiste){
@@ -52,7 +58,7 @@ public class ContasArrayList {
         else{
             throw new ContaInexistenteException();
         }
-    }
+    }*/
 
     Conta consultaConta(String usuario) throws ContaInexistenteException{
         boolean contaExiste = verificaExistencia(usuario);

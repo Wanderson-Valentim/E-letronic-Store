@@ -13,6 +13,14 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
+	public void insereEstoque(int qtd){
+		this.quantidade += qtd;
+	}
+	
+	public void removeEstoque(int qtd){
+		this.quantidade -= qtd;
+	}
+	
 	public String getNome(){
 		return this.nome;
 	}
@@ -24,15 +32,11 @@ public class Produto {
 	public float getPreco(){
 		return this.preco;
 	}
-	
-	public void insereProduto(int qtd){
-		this.quantidade += qtd;
+
+	public float getQuantidade(){
+		return this.quantidade;
 	}
-	
-	public void removeProduto(int qtd){
-		this.quantidade -= qtd;
-	}
-	
+
 	public void setPreco(int novoPreco){
 		this.preco = novoPreco;
 	}
