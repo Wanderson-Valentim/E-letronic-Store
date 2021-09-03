@@ -47,8 +47,6 @@ public class Loja {
 		 }
 	}
 	
-		
-	
 	void addProduto(ArrayList<String> data) {
 		Produto novoP = new Produto(
 				data.get(0), data.get(1),
