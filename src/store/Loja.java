@@ -13,15 +13,21 @@ import java.io.File;
 public class Loja {
 	private ProdutosArrayList produtos = new ProdutosArrayList();
 	private ContasArrayList clientes = new ContasArrayList();
+	private boolean isLoged = false;
+	private ContaCliente currentAccount;
 	
 	Loja() {
 		try {
 			System.out.println("lendo arquivos...");
 			this.lerArquivo("/src/items");
 			System.out.println("Terminei a leitura");
-			String[] data = {"Gerente", "da Silva", "admin", "admin", "no where"};
-			ContaGerente gerente = new ContaGerente(data);
+			String[] gerenteData = {"Gerente", "da Silva", "admin", "admin", "Brasil"};
+			ContaGerente gerente = new ContaGerente(gerenteData);
 			this.clientes.adicionaConta(gerente);
+			String[] defaultData = {"Querido", " Cliente", "contaDefault@e-letronicStore.com", "Default@157802zptwsffmuhnn52342ljipsdfhlaspojdksgasd", "Brasil"};
+			ContaCliente contaPadrao = new ContaCliente(defaultData);
+			this.clientes.adicionaConta(contaPadrao);
+			this.currentAccount = contaPadrao;
 		}
 		catch(Exception e) {
 			System.out.println("Error ao ler os produtos!");
@@ -88,6 +94,8 @@ public class Loja {
 			Conta conta = contas.get(counter);
 			if(conta.ehEssaConta(email) && conta.ehEssaSenha(password)) {
 				temConta = true;
+				this.isLoged = true;
+				this.currentAccount = ((ContaCliente)conta);
 			}
 		}
 		
@@ -101,6 +109,9 @@ public class Loja {
 	public void criarConta(String[] data) throws ContaExisteException {
 		ContaCliente novaConta = new ContaCliente(data);
 		this.clientes.adicionaConta(novaConta);
+		this.isLoged = true;
+		this.currentAccount = novaConta;
+		this.login(data[2], data[3]);
 	}
 	
 	public void mostrarProdutos() {
@@ -108,6 +119,30 @@ public class Loja {
 		for(int counter = 0; counter < produtos.size(); counter++) {
 			Produto p = produtos.get(counter);
 			System.out.println(p.id + " - " + p.nome + "\t- R$ " + p.preco + " -\tQuantidade: " + p.quantidade);
+		}
+	}
+	
+	public void mostrarCarrinho() {
+		Carrinho car = this.currentAccount.getCarrinho();
+		ArrayList<int[]> produtos = car.getListaProdutos();
+		ArrayList<Produto> carrinho = new ArrayList<Produto>();
+		for(int counter = 0; counter < produtos.size(); counter++) {
+			int[] produto = produtos.get(counter);
+			for(int j = 0; j < this.produtos.getProdutos().size(); j++) {
+				Produto p = this.produtos.getProdutos().get(j);
+				if(p.id == produto[0]) {
+					carrinho.add(p);
+				}
+			}
+		}
+		if(carrinho.size() < 1) {
+			System.out.println("O carrinho está vazio!");
+			return;
+		}
+		for(int counter = 0; counter < carrinho.size(); counter++) {
+			Produto p = carrinho.get(counter);
+			int[] data = produtos.get(counter);
+			System.out.println(p.id + " - " + p.nome + " - " + data[1]);
 		}
 	}
 }
