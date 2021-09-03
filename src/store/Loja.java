@@ -2,6 +2,7 @@ package store;
 import java.util.ArrayList;
 
 import exceptions.ProdutoExisteException;
+import exceptions.ProdutoInexistenteException;
 import repositorios.ContasArrayList;
 import repositorios.ProdutosArrayList;
 
@@ -53,16 +54,26 @@ public class Loja {
 	
 	void addProduto(ArrayList<String> data) {
 		Produto novoP = new Produto(
-				data.get(0), data.get(1),
-				Float.parseFloat(data.get(2)),
-				Integer.parseInt(data.get(3))
+				Integer.parseInt(data.get(0)),
+				data.get(1), data.get(2),
+				Float.parseFloat(data.get(3)),
+				Integer.parseInt(data.get(4))
 		);
 
 		try {
-			this.produtos.adicionaProduto(produto);
+			this.produtos.adicionaProduto(novoP);
 		}
 		catch (ProdutoExisteException e) {
 			System.out.println(e.getMessage());
 		}
+	}
+
+	public void procuraProduto(String str) throws ProdutoInexistenteException {
+		ArrayList<Produto> filteredList = this.produtos.procuraProduto(str);
+		for(int counter = 0; counter < filteredList.size(); counter++) {
+			Produto p = filteredList.get(counter);
+			System.out.println(p.getNome());
+		}
+		
 	}
 }

@@ -1,7 +1,12 @@
 package exceptions;
 
 public class ProdutoInexistenteException extends Exception{
-    public ProdutoInexistenteException(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ProdutoInexistenteException(){
         super("Produto Inexistente!");
     }
 }

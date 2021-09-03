@@ -93,6 +93,17 @@ public class ProdutosArrayList {
         }
     }
 
+    public ArrayList<Produto> procuraProduto(String str) throws ProdutoInexistenteException {
+      ArrayList<Produto> listaFiltrada = new ArrayList<Produto>() ;
+      for(int counter = 0; counter < this.produtos.size(); counter++) {
+    	  Produto produto = this.produtos.get(counter);
+    	  if(produto.getNome().contains(str)) {
+    		  listaFiltrada.add(produto);
+    	  }
+      }
+      return listaFiltrada;
+    }
+
     public ArrayList<Produto> getProdutos(){
         return this.produtos;
     }

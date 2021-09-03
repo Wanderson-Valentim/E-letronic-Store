@@ -1,7 +1,12 @@
 package exceptions;
 
 public class ContaExisteException extends Exception{
-    public ContaExisteException(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ContaExisteException(){
         super("Conta já existe!");
     }
 }
