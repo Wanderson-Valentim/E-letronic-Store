@@ -1,39 +1,54 @@
 package store;
 
 public class Produto {
+	int id;
 	String nome;
 	String categoria;
 	float preco;
 	int quantidade;
 	
-	Produto(String nome, String categoria, float preco, int quantidade){
+	Produto(int id, String nome, String categoria, float preco, int quantidade){
+		this.id = id;
 		this.nome  = nome;
 		this.categoria  = categoria;
 		this.preco  = preco;
 		this.quantidade = quantidade;
 	}
 	
-	String acessarNome(){
-		return this.nome;
-	}
-	
-	String acessarCategoria(){
-		return this.categoria;
-	}
-	
-	float acessarPreco(){
-		return this.preco;
-	}
-	
-	void inserirProduto(int qtd){
+	public void insereEstoque(int qtd){
 		this.quantidade += qtd;
 	}
 	
-	void removerProduto(int qtd){
+	public void removeEstoque(int qtd){
 		this.quantidade -= qtd;
 	}
 	
-	void alterarPreco(int novoPreco){
+	public int getId(){
+		return this.id;
+	}
+
+	public String getNome(){
+		return this.nome;
+	}
+	
+	public String getCategoria(){
+		return this.categoria;
+	}
+	
+	public float getPreco(){
+		return this.preco;
+	}
+
+	public float getQuantidade(){
+		return this.quantidade;
+	}
+
+	public void setId(int novoId){
+		this.id = novoId;
+	}
+
+	public void setPreco(int novoPreco){
 		this.preco = novoPreco;
 	}
+
 }
