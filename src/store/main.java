@@ -9,6 +9,7 @@ import exceptions.ProdutoInexistenteException;
 public class main {
 	public static void main(String[] args) throws ProdutoInexistenteException, ContaExisteException {
 		Loja store = new Loja();
+		store.mostrarProdutos();
 		store.procuraProduto("AOC");
 		Scanner myObj = new Scanner(System.in);
 		System.out.print("Nome: ");
