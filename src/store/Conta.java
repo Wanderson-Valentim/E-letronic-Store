@@ -21,6 +21,10 @@ public abstract class Conta {
 		return (senha.equals(this.senha));
 	}
 	
+	public boolean ehEssaConta(String email) {
+		return(email.equals(this.email));
+	}
+	
 	public boolean getTipoConta(){
 		return this.ehGerente;
 	}

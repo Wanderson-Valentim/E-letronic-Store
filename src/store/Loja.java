@@ -1,6 +1,7 @@
 package store;
 import java.util.ArrayList;
 
+import exceptions.ContaExisteException;
 import exceptions.ProdutoExisteException;
 import exceptions.ProdutoInexistenteException;
 import repositorios.ContasArrayList;
@@ -18,6 +19,9 @@ public class Loja {
 			System.out.println("lendo arquivos...");
 			this.lerArquivo("/src/items");
 			System.out.println("Terminei a leitura");
+			String[] data = {"Gerente", "da Silva", "admin", "admin", "no where"};
+			ContaGerente gerente = new ContaGerente(data);
+			this.clientes.adicionaConta(gerente);
 		}
 		catch(Exception e) {
 			System.out.println("Error ao ler os produtos!");
@@ -74,6 +78,28 @@ public class Loja {
 			Produto p = filteredList.get(counter);
 			System.out.println(p.getNome());
 		}
+
+	}
+	
+	public void login(String email, String password) {
+		ArrayList<Conta> contas = this.clientes.getContas();
+		boolean temConta = false;
+		for(int counter = 0; counter < contas.size(); counter++) {
+			Conta conta = contas.get(counter);
+			if(conta.ehEssaConta(email) && conta.ehEssaSenha(password)) {
+				temConta = true;
+			}
+		}
 		
+		if(temConta) {
+			System.out.println("Você está logado!");
+		} else {
+			System.out.println("Email ou senha estão errados!");
+		}
+	}
+	
+	public void criarConta(String[] data) throws ContaExisteException {
+		ContaCliente novaConta = new ContaCliente(data);
+		this.clientes.adicionaConta(novaConta);
 	}
 }
