@@ -14,7 +14,7 @@ public class ContaCliente extends Conta{
         return this.carrinho;
     }
 
-    public void adicionaProdutoCarrinho(Produto produto){
+    public void adicionaProdutoCarrinho(Produto produto) {
         carrinho.adicionaProduto(produto);
     }
 

@@ -10,8 +10,8 @@ public class ContaGerente extends Conta{
         super(data, true);
     }
 
-    public void cadastraProduto(String nome, String categoria, float preco, int quantidade, ProdutosArrayList repositorio) throws ProdutoExisteException{
-        Produto produto = new Produto(nome, categoria, preco, quantidade);
+    public void cadastraProduto(int id, String nome, String categoria, float preco, int quantidade, ProdutosArrayList repositorio) throws ProdutoExisteException{
+        Produto produto = new Produto(id, nome, categoria, preco, quantidade);
         repositorio.adicionaProduto(produto);
     }
 

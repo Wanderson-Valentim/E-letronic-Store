@@ -52,10 +52,10 @@ public class Loja {
 	}	
 	
 	private void addProduto(ArrayList<String> data) {
-		Produto produto = new Produto(
-				data.get(0), data.get(1),
-				Float.parseFloat(data.get(2)),
-				Integer.parseInt(data.get(3))
+		Produto produto = new Produto(Integer.parseInt(data.get(0)),
+				data.get(1), data.get(2),
+				Float.parseFloat(data.get(3)),
+				Integer.parseInt(data.get(4))
 		);
 
 		try {

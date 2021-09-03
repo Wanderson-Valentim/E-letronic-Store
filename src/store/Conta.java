@@ -17,8 +17,8 @@ public abstract class Conta {
 		this.ehGerente = tipo;
 	}
 
-	public boolean ehEssaConta(String usuario, String senha) {
-		return ((usuario.equals(this.email)) && senha.equals(this.senha));
+	public boolean ehEssaSenha(String senha) {
+		return (senha.equals(this.senha));
 	}
 	
 	public boolean getTipoConta(){

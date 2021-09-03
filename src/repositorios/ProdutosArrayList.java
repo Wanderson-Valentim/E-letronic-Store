@@ -15,10 +15,21 @@ public class ProdutosArrayList {
         index = 0;
     }
 
-    private boolean verificaExistencia(String nome){
+    private boolean verificaExistenciaUsuario(String nome){
         for(int i=0; i < this.produtos.size(); i++){
             String produto = this.produtos.get(i).getNome();
-            if(produto.equals(produto)){
+            if(produto.equals(nome)){
+                this.index = i;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean verificaExistenciaId(int id){
+        for(int i=0; i < this.produtos.size(); i++){
+            int produto = this.produtos.get(i).getId();
+            if(produto == id){
                 this.index = i;
                 return true;
             }
@@ -27,7 +38,7 @@ public class ProdutosArrayList {
     }
 
     public void adicionaProduto(Produto produto) throws ProdutoExisteException{
-        boolean produtoExiste = verificaExistencia(produto.getNome());
+        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
         
         if(!produtoExiste){
             this.produtos.add(produto);
@@ -38,7 +49,7 @@ public class ProdutosArrayList {
     }
 
     public void removeProduto(Produto produto) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistencia(produto.getNome());
+        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
 
         if(produtoExiste){
             this.produtos.remove(produto);
@@ -50,7 +61,7 @@ public class ProdutosArrayList {
 
     //Não implementada, pq n sei se precisa
     /*public void atualizaProduto(Produto produto) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistencia(produto.getNome());
+        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
 
         if(produtoExiste){
             
@@ -60,8 +71,19 @@ public class ProdutosArrayList {
         }
     }*/
 
-    Produto consultaProduto(String usuario) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistencia(usuario);
+    Produto consultaProdutoNomeProduto(String nome) throws ProdutoInexistenteException{
+        boolean produtoExiste = verificaExistenciaUsuario(nome);
+
+        if(produtoExiste){
+            return produtos.get(this.index);
+        }
+        else{
+            throw new ProdutoInexistenteException();
+        }
+    }
+
+    Produto consultaProdutoId(int id) throws ProdutoInexistenteException{
+        boolean produtoExiste = verificaExistenciaId(id);
 
         if(produtoExiste){
             return produtos.get(this.index);
