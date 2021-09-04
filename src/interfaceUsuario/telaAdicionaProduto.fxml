@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane prefWidth="483.0" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="321.0" minWidth="10.0" prefWidth="112.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="304.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="473.0" minWidth="10.0" prefWidth="20.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="91.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <TextField prefHeight="24.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Categoria:" textFill="#1e062b" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Quantidade:" textFill="#1e062b" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <Button mnemonicParsing="false" prefWidth="168.0" style="-fx-background-color: #900fd6;" text="Adicionar Produto" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="Id:" textFill="#1e062b">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Nome:" textFill="#1e062b" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
+            <Label text="Preço:" textFill="#1e062b" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="5.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+            </Label>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
+   </center>
+   <right>
+      <Region prefHeight="260.0" prefWidth="80.0" style="-fx-background-color: #1e062b;" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Region prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #1e062b;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <left>
+      <Region prefHeight="260.0" prefWidth="80.0" style="-fx-background-color: #1e062b;" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <StackPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="138.0" prefWidth="600.0" style="-fx-background-color: #1e062b;" />
+            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="385.0" style="-fx-background-color: #1e062b;" text="E-letronic Store" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Button>
+         </children>
+      </StackPane>
+   </top>
+</BorderPane>
