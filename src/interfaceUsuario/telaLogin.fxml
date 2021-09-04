@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceUsuario.MainController">
    <center>
       <GridPane prefWidth="483.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -69,7 +69,7 @@
       <StackPane prefHeight="111.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="138.0" prefWidth="600.0" style="-fx-background-color: #1e062b;" />
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="392.0" style="-fx-background-color: #1e062b;" text="E-letronic Store" textFill="WHITE">
+            <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#trocaParaHome" prefHeight="68.0" prefWidth="392.0" style="-fx-background-color: #1e062b;" text="E-letronic Store" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
