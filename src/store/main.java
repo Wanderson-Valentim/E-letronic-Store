@@ -1,30 +1,30 @@
 package store;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import exceptions.ContaExisteException;
 import exceptions.ProdutoInexistenteException;
 
-public class main {
-	public static void main(String[] args) throws ProdutoInexistenteException, ContaExisteException {
-		Loja store = new Loja();
-		store.procuraProduto("AOC");
-		Scanner myObj = new Scanner(System.in);
-		System.out.print("Nome: ");
-		String nome = myObj.nextLine();
-		System.out.print("Sobrenome: ");
-		String sobrenome = myObj.nextLine();
-		System.out.print("Email: ");
-		String email = myObj.nextLine();
-		System.out.print("Senha: ");
-		String senha = myObj.nextLine();
-		System.out.print("Endereço: ");
-		String endereco = myObj.nextLine();
-		String[] data = {nome, sobrenome, email, senha, endereco};
-		store.criarConta(data);
-		
-		System.out.println("===================================================");
-		store.mostrarCarrinho();
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.scene.layout.BorderPane;
+
+public class main extends Application {
+	@Override
+	public void start(Stage stage) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("E-letronic Store");
+		stage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
 	}
 }
