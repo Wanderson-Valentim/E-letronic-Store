@@ -22,7 +22,12 @@ public class main extends Application {
 		Loja store = new Loja();
 		ArrayList<Produto> produtos = store.pegarProdutos();
 		
-		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
+		Parent root = loader.load();
+		
+		MainController controller = loader.getController();
+		controller.colocarLoja(store);
+		
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("E-letronic Store");

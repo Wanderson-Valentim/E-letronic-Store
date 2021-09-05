@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="interfaceUsuario.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceUsuario.TelaLoginController">
    <center>
       <GridPane prefWidth="483.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -27,8 +27,8 @@
             <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField prefHeight="24.0" prefWidth="267.0" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="email" prefHeight="24.0" prefWidth="267.0" GridPane.columnIndex="1" />
+            <TextField fx:id="senha" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Email:" textFill="#1e062b">
                <GridPane.margin>
                   <Insets left="20.0" />
@@ -41,12 +41,12 @@
             </Label>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Entrar" textFill="WHITE">
+                  <Button fx:id="entrarBtn" mnemonicParsing="false" onAction="#loginEvent" style="-fx-background-color: #900fd6;" text="Entrar" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Criar Nova Conta" textFill="WHITE">
+                  <Button fx:id="criarContaBtn" mnemonicParsing="false" onAction="#trocarParaCriarConta" style="-fx-background-color: #900fd6;" text="Criar Nova Conta" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin>

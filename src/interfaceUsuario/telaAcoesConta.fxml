@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="interfaceUsuario.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceUsuario.TelaAcoesContaController">
    <right>
       <Region prefHeight="280.0" prefWidth="70.0" style="-fx-background-color: #1e062b;" BorderPane.alignment="CENTER" />
    </right>
@@ -68,8 +68,8 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="email" GridPane.columnIndex="1" />
+                  <TextField fx:id="endereco" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label text="Novo Email:" textFill="#1e062b">
                      <GridPane.margin>
                         <Insets right="5.0" />
@@ -91,7 +91,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #900fd6;" text="Alterar Senha" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#alterarSenha" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #900fd6;" text="Alterar Senha" textFill="WHITE">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>

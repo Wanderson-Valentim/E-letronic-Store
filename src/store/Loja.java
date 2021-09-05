@@ -13,7 +13,7 @@ import java.io.File;
 public class Loja {
 	private ProdutosArrayList produtos = new ProdutosArrayList();
 	private ContasArrayList clientes = new ContasArrayList();
-	private boolean isLoged = false;
+	public boolean isLogged = false;
 	private ContaCliente currentAccount;
 	
 	Loja() {
@@ -94,7 +94,7 @@ public class Loja {
 			Conta conta = contas.get(counter);
 			if(conta.ehEssaConta(email) && conta.ehEssaSenha(password)) {
 				temConta = true;
-				this.isLoged = true;
+				this.isLogged = true;
 				this.currentAccount = ((ContaCliente)conta);
 			}
 		}
@@ -109,9 +109,14 @@ public class Loja {
 	public void criarConta(String[] data) throws ContaExisteException {
 		ContaCliente novaConta = new ContaCliente(data);
 		this.clientes.adicionaConta(novaConta);
-		this.isLoged = true;
+		this.isLogged = true;
 		this.currentAccount = novaConta;
 		this.login(data[2], data[3]);
+	}
+	
+	public ContaCliente pegarConta() {
+		if(isLogged) return this.currentAccount;
+		else return null;
 	}
 	
 	public ArrayList<Produto> pegarProdutos() {

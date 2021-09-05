@@ -32,6 +32,10 @@ public class MainController {
 	private Parent root;
 	private Loja store;
 	
+	public void colocarLoja(Loja store) {
+		this.store = store;
+	}
+	
 	public void putItems() throws IOException {
 		item.add("Test1");
 		item.add("Test2");
@@ -51,7 +55,11 @@ public class MainController {
 	}
 	
 	public void trocaParaLogin(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaLogin.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaLogin.fxml"));
+		Parent root = loader.load();
+		TelaLoginController controller = loader.getController();
+		controller.colocarLoja(store);
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -75,7 +83,15 @@ public class MainController {
 	}
 	
 	public void trocaParaConta(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaAcoesConta.fxml"));
+//		if(!this.store.isLogged) {
+//			System.out.println("Você não está logado!");
+//			return;
+//		}
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaAcoesConta.fxml"));
+		Parent root = loader.load();
+		TelaAcoesContaController controller = loader.getController();
+		controller.colocarStore(store);
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
