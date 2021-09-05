@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
    <children>
       <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="399.0" style="-fx-background-color: #AAA;">
          <children>

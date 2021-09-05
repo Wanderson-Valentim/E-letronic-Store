@@ -23,8 +23,7 @@ import store.Produto;
 public class MainController {
 	@FXML Button buscarBtn;
 	@FXML TextField searchBar;
-	@FXML
-	private ListView<String> items;
+	@FXML private ListView<String> items;
 	private List<String> item = new ArrayList<>();
 	private ObservableList<String> lista;
 	
