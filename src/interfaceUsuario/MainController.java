@@ -45,6 +45,11 @@ public class MainController {
 //		}
 	}
 	
+	public void searchEvent() {
+		String value = searchBar.getText();
+		System.out.println(value);
+	}
+	
 	public void trocaParaLogin(ActionEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaLogin.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
