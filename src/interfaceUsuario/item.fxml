@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <HBox alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="399.0" style="-fx-background-color: #AAA;">
+         <children>
+            <Label fx:id="ItemID" prefHeight="46.0" prefWidth="90.0" text="Item Id">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="ItemName" prefHeight="46.0" prefWidth="134.0" text="Item Name" />
+            <Label fx:id="price" prefHeight="46.0" prefWidth="100.0" text="Price" />
+            <Button fx:id="addBtn" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" style="-fx-background-color: #555;" text="Add">
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

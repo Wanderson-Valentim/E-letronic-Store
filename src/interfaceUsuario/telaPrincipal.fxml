@@ -10,15 +10,13 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceUsuario.MainController">
    <right>
       <ScrollBar orientation="VERTICAL" style="-fx-background-color: #936CA8;" BorderPane.alignment="CENTER" />
    </right>
-   <center>
-      <ListView fx:id="itensContainer" prefHeight="349.0" prefWidth="587.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER" />
-   </center>
    <top>
       <StackPane prefHeight="61.0" prefWidth="600.0" style="-fx-background-color: #1E062B;" BorderPane.alignment="CENTER">
          <children>
@@ -43,7 +41,7 @@
                         <Insets left="5.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#trocaParaLogin" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #900fd6;" text="Login" textFill="WHITE" GridPane.columnIndex="3">
+                  <Button mnemonicParsing="false" onAction="#trocaParaLogin" prefHeight="30.0" prefWidth="55.0" style="-fx-background-color: #900fd6;" text="Login" textFill="WHITE" GridPane.columnIndex="3">
                      <GridPane.margin>
                         <Insets left="2.0" />
                      </GridPane.margin>
@@ -51,14 +49,14 @@
                         <Font name="Roboto" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="carrinhoBtn" mnemonicParsing="false" onAction="#trocaParaCarrinho" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #900fd6;" text="Carrinho" textFill="WHITE" GridPane.columnIndex="5" />
+                  <Button mnemonicParsing="false" onAction="#trocaParaCarrinho" prefHeight="30.0" prefWidth="77.0" style="-fx-background-color: #900fd6;" text="Carrinho" textFill="WHITE" GridPane.columnIndex="5" />
                   <TextField fx:id="searchBar" prefHeight="30.0" prefWidth="261.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
-                  <Button fx:id="homeBtn" mnemonicParsing="false" onAction="#trocaParaHome" prefHeight="41.0" prefWidth="134.0" style="-fx-background-color: #1E062B;" text="E-letronic Store" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#trocaParaHome" prefHeight="41.0" prefWidth="134.0" style="-fx-background-color: #1E062B;" text="E-letronic Store" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="contaBtn" mnemonicParsing="false" onAction="#trocaParaConta" prefHeight="30.0" style="-fx-background-color: #900fd6;" text="Conta" textFill="WHITE" GridPane.columnIndex="4">
+                  <Button mnemonicParsing="false" onAction="#trocaParaConta" prefHeight="30.0" style="-fx-background-color: #900fd6;" text="Conta" textFill="WHITE" GridPane.columnIndex="4">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -68,4 +66,11 @@
          </children>
       </StackPane>
    </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView fx:id="items" prefHeight="372.0" prefWidth="585.0" />
+         </children>
+      </VBox>
+   </center>
 </BorderPane>

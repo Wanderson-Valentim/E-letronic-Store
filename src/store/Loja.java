@@ -114,12 +114,9 @@ public class Loja {
 		this.login(data[2], data[3]);
 	}
 	
-	public void mostrarProdutos() {
+	public ArrayList<Produto> pegarProdutos() {
 		ArrayList<Produto> produtos = this.produtos.getProdutos();
-		for(int counter = 0; counter < produtos.size(); counter++) {
-			Produto p = produtos.get(counter);
-			System.out.println(p.id + " - " + p.nome + "\t- R$ " + p.preco + " -\tQuantidade: " + p.quantidade);
-		}
+		return produtos;
 	}
 	
 	public void mostrarCarrinho() {

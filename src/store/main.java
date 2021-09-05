@@ -14,9 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
+import interfaceUsuario.MainController;
+
 public class main extends Application {
 	@Override
 	public void start(Stage stage) throws IOException {
+		Loja store = new Loja();
+		ArrayList<Produto> produtos = store.pegarProdutos();
+		
 		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
