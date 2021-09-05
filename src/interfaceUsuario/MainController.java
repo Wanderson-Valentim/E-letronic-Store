@@ -55,6 +55,10 @@ public class MainController {
 	}
 	
 	public void trocaParaLogin(ActionEvent event) throws IOException {
+		if(this.store.isLogged) {
+			System.out.println("Você já está logado!");
+			return;
+		}
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaLogin.fxml"));
 		Parent root = loader.load();
 		TelaLoginController controller = loader.getController();
@@ -67,15 +71,24 @@ public class MainController {
 	}
 	
 	public void trocaParaHome(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaPrincipal.fxml"));
+		Parent root = loader.load();
+		MainController controller = loader.getController();
+		controller.colocarLoja(store);
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
+		
 		stage.show();
 	}
 	
 	public void trocaParaCarrinho(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/interfaceUsuario/telaCarrinho.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaCarrinho.fxml"));
+		Parent root = loader.load();
+		TelaCarrinhoController controller = loader.getController();
+		controller.colocarLoja(store);
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -83,10 +96,10 @@ public class MainController {
 	}
 	
 	public void trocaParaConta(ActionEvent event) throws IOException {
-//		if(!this.store.isLogged) {
-//			System.out.println("Você não está logado!");
-//			return;
-//		}
+		if(!this.store.isLogged) {
+			System.out.println("Você não está logado!");
+			return;
+		}
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaAcoesConta.fxml"));
 		Parent root = loader.load();
 		TelaAcoesContaController controller = loader.getController();

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import store.ContaCliente;
 import store.Loja;
 
 public class TelaAlterarSenhaController {
@@ -38,5 +39,25 @@ public class TelaAlterarSenhaController {
 		stage.setScene(scene);
 		
 		stage.show();
+	}
+
+	private void trocarParaConta(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaAcoesConta.fxml"));
+		Parent root = loader.load();
+		TelaAcoesContaController controller = loader.getController();
+		controller.colocarStore(store);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public void trocarSenha(ActionEvent event) throws IOException {
+		ContaCliente conta = this.store.pegarConta();
+		if(!conta.confirmarSenha(senhaAtual.getText())) return;
+		
+		conta.atualizaSenha(novaSenha.getText());
+		this.trocarParaConta(event);
 	}
 }

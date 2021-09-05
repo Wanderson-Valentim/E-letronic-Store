@@ -38,7 +38,7 @@
                   <Insets right="5.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Alterar Senha" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#trocarSenha" style="-fx-background-color: #900fd6;" text="Alterar Senha" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="20.0" right="90.0" />
                </GridPane.margin>

@@ -29,9 +29,13 @@ public class ContaCliente extends Conta{
     public void atualizaEmail(String novoEmail){
         this.setEmail(novoEmail);
     }
+    
+    public boolean confirmarSenha(String senha) {
+    	return this.ehEssaSenha(senha);
+    }
 
-    public  void atualizaSenha(String novoSenha){
-        this.setSenha(novoSenha);
+    public  void atualizaSenha(String novaSenha){
+        this.setSenha(novaSenha);
     }
 
     public void atualizaEndereco(String novoEndereco){
