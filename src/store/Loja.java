@@ -1,6 +1,5 @@
 package store;
 import java.util.ArrayList;
-import java.util.Random;
 
 import exceptions.ContaExisteException;
 import exceptions.ContaInexistenteException;

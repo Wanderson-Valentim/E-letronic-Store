@@ -2,7 +2,6 @@ package interfaceUsuario;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import store.Loja;
+import store.Produto;
 
 public class MainController {
 	@FXML
@@ -29,23 +29,31 @@ public class MainController {
 	@FXML
 	Button loginBtn;
 	
-	@FXML private ListView<String> items;
-	private List<String> item = new ArrayList<>();
+	@FXML
+	ListView<String> items;
+	
 	private ObservableList<String> lista;
 	
 	private Stage stage;
 	private Scene scene;
 	private Loja store;
 	
-	public void colocarLoja(Loja store) {
+	public void colocarLoja(Loja store) throws IOException {
 		this.store = store;
+		putItems();
 	}
 	
 	public void putItems() throws IOException {
-		item.add("Test1");
-		item.add("Test2");
+		ArrayList<Produto> produtos = this.store.pegarProdutos();
+		lista = FXCollections.observableArrayList();
 		
-		lista = FXCollections.observableArrayList(item);
+		
+		for(int i = 0; i < produtos.size(); i++) {
+			Produto p = produtos.get(i);
+			
+			String str = p.getCategoria() + " - " + p.getNome() + " - " + " R$ " + p.getPreco();
+			lista.add(str);
+		}
 		
 		items.setItems(lista);
 //		ArrayList<Produto> produtos = store.pegarProdutos();
