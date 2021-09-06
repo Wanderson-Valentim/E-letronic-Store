@@ -1,7 +1,6 @@
 package interfaceUsuario;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import exceptions.ContaInexistenteException;
 import exceptions.ProdutoInexistenteException;
@@ -13,9 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import store.ContaCliente;
-import store.ContaGerente;
+
 import store.Loja;
+import store.Produto;
 
 public class TelaGerenteController {
 	@FXML
@@ -63,11 +62,15 @@ public class TelaGerenteController {
 		this.store.removerProduto(nome);
 	}
 	
-	public void alterarSenha(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaAlterarSenha.fxml"));
+	public void editarProduto(ActionEvent event) throws IOException, ProdutoInexistenteException {
+		String value = editaText.getText();
+		Produto p = this.store.pegarProduto(value);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaEditarProduto.fxml"));
 		Parent root = loader.load();
-		TelaAlterarSenhaController controller = loader.getController();
-		controller.colocarLoja(store);
+		TelaEditarProdutoController controller = loader.getController();
+		controller.colocarStore(store);
+		controller.colocarProduto(p);
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -75,9 +78,23 @@ public class TelaGerenteController {
 		
 		stage.show();
 	}
-
+	
 	public void sairDaConta(ActionEvent event) throws ContaInexistenteException, IOException {
 		store.logout();
 		this.trocaParaHome(event);
 	}
+	
+	public void trocaParaAdicionarProduto(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaAdicionaProduto.fxml"));
+		Parent root = loader.load();
+		TelaAdicionaProdutoController controller = loader.getController();
+		controller.colocarStore(store);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		
+		stage.show();
+	}
+	
 }

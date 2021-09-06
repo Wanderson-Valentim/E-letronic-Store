@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaceUsuario.TelaEditarProdutoController">
    <center>
       <GridPane prefWidth="483.0" BorderPane.alignment="CENTER">
          <columnConstraints>
@@ -61,7 +61,7 @@
             <TextField fx:id="nome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="id" GridPane.columnIndex="1" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" prefWidth="168.0" style="-fx-background-color: #900fd6;" text="Editar Produto" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Button mnemonicParsing="false" onAction="#editarProduto" prefWidth="168.0" style="-fx-background-color: #900fd6;" text="Editar Produto" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -88,7 +88,7 @@
       <StackPane prefHeight="70.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="138.0" prefWidth="600.0" style="-fx-background-color: #1e062b;" />
-            <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="414.0" style="-fx-background-color: #1e062b;" text="E-letronic Store" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#trocaParaHome" prefHeight="68.0" prefWidth="414.0" style="-fx-background-color: #1e062b;" text="E-letronic Store" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

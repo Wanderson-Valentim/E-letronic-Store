@@ -70,15 +70,12 @@ public class Loja {
 	}
 	
 	public void addProduto(ArrayList<String> data) {
-		if(!ehGerente) return;
-		Random r = new Random();
-	    int ID =  r.nextInt((10000) + 1);
-		
+
 		Produto novoP = new Produto(
-				ID,
-				data.get(0), "geral",
-				Float.parseFloat(data.get(1)),
-				Integer.parseInt(data.get(2))
+				Integer.parseInt(data.get(0)),
+				data.get(1), data.get(2),
+				Float.parseFloat(data.get(3)),
+				Integer.parseInt(data.get(4))
 		);
 
 		try {
@@ -103,7 +100,7 @@ public class Loja {
 	}
 
 	public void removerProduto(String produto) throws ProdutoInexistenteException {
-		Produto p = produtos.consultaProdutoNomeProduto(produto);
+		Produto p = produtos.consultaProdutoNome(produto);
 		produtos.removeProduto(p);
 		System.out.println("Produto Removido");
 	}
@@ -111,6 +108,10 @@ public class Loja {
 	public ArrayList<Produto> procuraProduto(String str) throws ProdutoInexistenteException {
 		ArrayList<Produto> filteredList = this.produtos.procuraProduto(str);
 		return filteredList;
+	}
+	
+	public Produto pegarProduto(String nome) throws ProdutoInexistenteException {
+		return produtos.consultaProdutoNome(nome);
 	}
 	
 	public void logout() {

@@ -42,12 +42,20 @@ public class Produto {
 	public int getQuantidade(){
 		return this.quantidade;
 	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 
 	public void setId(int novoId){
 		this.id = novoId;
 	}
 
-	public void setPreco(int novoPreco){
+	public void setPreco(float novoPreco){
 		this.preco = novoPreco;
 	}
 	

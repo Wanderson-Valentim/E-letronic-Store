@@ -86,7 +86,7 @@
                      </GridPane.margin>
                   </Label>
                   <TextField fx:id="editaText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Editar Produto" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#editarProduto" style="-fx-background-color: #900fd6;" text="Editar Produto" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
@@ -113,11 +113,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Cadastrar Novo Produto" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#trocaParaAdicionarProduto" style="-fx-background-color: #900fd6;" text="Cadastrar Novo Produto" textFill="WHITE">
                      <GridPane.margin>
                         <Insets right="10.0" />
                      </GridPane.margin></Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Sair da Conta" textFill="WHITE" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onAction="#sairDaConta" style="-fx-background-color: #900fd6;" text="Sair da Conta" textFill="WHITE" GridPane.columnIndex="1">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

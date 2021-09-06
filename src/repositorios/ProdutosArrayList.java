@@ -16,7 +16,7 @@ public class ProdutosArrayList implements IProdutosArrayList{
         index = 0;
     }
 
-    public boolean verificaExistenciaUsuario(String nome){
+    public boolean verificaExistenciaProduto(String nome){
         for(int i=0; i < this.produtos.size(); i++){
             String produto = this.produtos.get(i).getNome();
             if(produto.equals(nome)){
@@ -39,7 +39,7 @@ public class ProdutosArrayList implements IProdutosArrayList{
     }
 
     public void adicionaProduto(Produto produto) throws ProdutoExisteException{
-        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
+        boolean produtoExiste = verificaExistenciaProduto(produto.getNome());
         
         if(!produtoExiste){
             this.produtos.add(produto);
@@ -50,7 +50,7 @@ public class ProdutosArrayList implements IProdutosArrayList{
     }
 
     public void removeProduto(Produto produto) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
+        boolean produtoExiste = verificaExistenciaProduto(produto.getNome());
 
         if(produtoExiste){
             this.produtos.remove(produto);
@@ -60,9 +60,8 @@ public class ProdutosArrayList implements IProdutosArrayList{
         }
     }
 
-    public Produto consultaProdutoNomeProduto(String nome) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistenciaUsuario(nome);
-
+    public Produto consultaProdutoNome(String nome) throws ProdutoInexistenteException{
+        boolean produtoExiste = verificaExistenciaProduto(nome);
         if(produtoExiste){
             return produtos.get(this.index);
         }
@@ -83,10 +82,10 @@ public class ProdutosArrayList implements IProdutosArrayList{
     }
     
     public void aumentarQuantidade(String name, int quantidade) throws ProdutoInexistenteException {
-    	Produto p = this.consultaProdutoNomeProduto(name);
+    	Produto p = this.consultaProdutoNome(name);
     	p.setQuantidade(quantidade);
     }
-
+    
     public ArrayList<Produto> procuraProduto(String str) throws ProdutoInexistenteException {
       ArrayList<Produto> listaFiltrada = new ArrayList<Produto>() ;
       for(int counter = 0; counter < this.produtos.size(); counter++) {
