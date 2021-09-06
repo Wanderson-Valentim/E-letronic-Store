@@ -21,8 +21,15 @@ import store.Loja;
 import store.Produto;
 
 public class MainController {
-	@FXML Button buscarBtn;
-	@FXML TextField searchBar;
+	@FXML
+	Button buscarBtn;
+	
+	@FXML 
+	TextField searchBar;
+	
+	@FXML
+	Button loginBtn;
+	
 	@FXML private ListView<String> items;
 	private List<String> item = new ArrayList<>();
 	private ObservableList<String> lista;
@@ -54,11 +61,18 @@ public class MainController {
 		System.out.println(value);
 	}
 	
+	public void trocarBtnLoginLabel() {
+		if(this.store.isLogged) loginBtn.setText("Logout");
+		else loginBtn.setText("Login");
+	}
+	
 	public void trocaParaLogin(ActionEvent event) throws IOException {
 		if(this.store.isLogged) {
-			System.out.println("Você já está logado!");
+			this.store.logout();
+			trocarBtnLoginLabel();
 			return;
 		}
+		loginBtn.setText("Logout");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaLogin.fxml"));
 		Parent root = loader.load();
 		TelaLoginController controller = loader.getController();
@@ -75,6 +89,7 @@ public class MainController {
 		Parent root = loader.load();
 		MainController controller = loader.getController();
 		controller.colocarLoja(store);
+		controller.trocarBtnLoginLabel();
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);

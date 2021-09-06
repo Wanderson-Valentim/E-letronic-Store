@@ -34,6 +34,7 @@ public class TelaLoginController {
 		Parent root = loader.load();
 		MainController controller = loader.getController();
 		controller.colocarLoja(store);
+		controller.trocarBtnLoginLabel();
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
@@ -55,10 +56,11 @@ public class TelaLoginController {
 		stage.show();
 	}
 	
-	public void loginEvent() {
+	public void loginEvent(ActionEvent event) throws IOException {
 		String emailValue = email.getText();
 		String senhaValue = senha.getText();
 		
-		System.out.println(emailValue + " " + senhaValue);
+		this.store.login(emailValue, senhaValue);
+		if(this.store.isLogged)	this.trocaParaHome(event);
 	}
 }

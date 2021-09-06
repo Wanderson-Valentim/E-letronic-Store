@@ -1,7 +1,9 @@
 package store;
 import java.util.ArrayList;
+import java.util.Random;
 
 import exceptions.ContaExisteException;
+import exceptions.ContaInexistenteException;
 import exceptions.ProdutoExisteException;
 import exceptions.ProdutoInexistenteException;
 import repositorios.ContasArrayList;
@@ -14,6 +16,9 @@ public class Loja {
 	private ProdutosArrayList produtos = new ProdutosArrayList();
 	private ContasArrayList clientes = new ContasArrayList();
 	private ContaCliente currentAccount;
+	private ContaCliente contaDefault;
+	private ContaGerente gerente;
+	public boolean ehGerente = false;
 	public boolean isLogged = false;
 	
 	public Loja() {
@@ -23,9 +28,11 @@ public class Loja {
 			System.out.println("Terminei a leitura");
 			String[] gerenteData = {"Gerente", "da Silva", "admin", "admin", "Brasil"};
 			ContaGerente gerente = new ContaGerente(gerenteData);
+			this.gerente = gerente;
 			this.clientes.adicionaConta(gerente);
 			String[] defaultData = {"Querido", " Cliente", "contaDefault@e-letronicStore.com", "Default@157802zptwsffmuhnn52342ljipsdfhlaspojdksgasd", "Brasil"};
 			ContaCliente contaPadrao = new ContaCliente(defaultData);
+			contaDefault = contaPadrao;
 			this.clientes.adicionaConta(contaPadrao);
 			this.currentAccount = contaPadrao;
 		}
@@ -63,11 +70,15 @@ public class Loja {
 	}
 	
 	public void addProduto(ArrayList<String> data) {
+		if(!ehGerente) return;
+		Random r = new Random();
+	    int ID =  r.nextInt((10000) + 1);
+		
 		Produto novoP = new Produto(
-				Integer.parseInt(data.get(0)),
-				data.get(1), data.get(2),
-				Float.parseFloat(data.get(3)),
-				Integer.parseInt(data.get(4))
+				ID,
+				data.get(0), "geral",
+				Float.parseFloat(data.get(1)),
+				Integer.parseInt(data.get(2))
 		);
 
 		try {
@@ -77,28 +88,54 @@ public class Loja {
 			System.out.println(e.getMessage());
 		}
 	}
-
-	public void procuraProduto(String str) throws ProdutoInexistenteException {
-		ArrayList<Produto> filteredList = this.produtos.procuraProduto(str);
-		for(int counter = 0; counter < filteredList.size(); counter++) {
-			Produto p = filteredList.get(counter);
-			System.out.println(p.getNome());
+	
+	public void aumentarEstoque(String nome, String quantidade) throws ProdutoInexistenteException {
+		boolean isInteger = true;
+		for(int i = 0; i < quantidade.length(); i++) {
+			char c = quantidade.charAt(i);
+			if(c < '0' || c > '9') {
+				isInteger = false;
+				break;
+			}
 		}
+		int q = Integer.parseInt(quantidade);
+		if(isInteger) this.produtos.aumentarQuantidade(nome, q);
+	}
 
+	public void removerProduto(String produto) throws ProdutoInexistenteException {
+		Produto p = produtos.consultaProdutoNomeProduto(produto);
+		produtos.removeProduto(p);
+		System.out.println("Produto Removido");
+	}
+	
+	public ArrayList<Produto> procuraProduto(String str) throws ProdutoInexistenteException {
+		ArrayList<Produto> filteredList = this.produtos.procuraProduto(str);
+		return filteredList;
+	}
+	
+	public void logout() {
+		currentAccount = contaDefault;
+		ehGerente = false;
+		isLogged = false;
 	}
 	
 	public void login(String email, String password) {
 		ArrayList<Conta> contas = this.clientes.getContas();
 		boolean temConta = false;
-		for(int counter = 0; counter < contas.size(); counter++) {
-			Conta conta = contas.get(counter);
-			if(conta.ehEssaConta(email) && conta.ehEssaSenha(password)) {
-				temConta = true;
-				this.isLogged = true;
-				this.currentAccount = ((ContaCliente)conta);
+		if(gerente.ehEssaConta(email) && gerente.ehEssaSenha(password)) {
+			ehGerente = true;
+			temConta = true;
+			isLogged = true;
+		} else {
+			for(int counter = 0; counter < contas.size(); counter++) {
+				Conta conta = contas.get(counter);
+				if(conta.ehEssaConta(email) && conta.ehEssaSenha(password)) {
+					temConta = true;
+					this.isLogged = true;
+					this.currentAccount = ((ContaCliente)conta);
+				}
 			}
 		}
-		
 		if(temConta) {
 			System.out.println("Você está logado!");
 		} else {
@@ -116,12 +153,26 @@ public class Loja {
 	
 	public ContaCliente pegarConta() {
 		if(isLogged) return this.currentAccount;
-		else return null;
+		return null;
+	}
+	
+	public ContaGerente pegarContaGerente() {
+		if(isLogged) return this.gerente;
+		return null;
 	}
 	
 	public ArrayList<Produto> pegarProdutos() {
 		ArrayList<Produto> produtos = this.produtos.getProdutos();
 		return produtos;
+	}
+	
+	public void removerConta() throws ContaInexistenteException {
+		if(ehGerente) {
+			System.out.println("Não é possível remover a conta do gerente!");
+			return;
+		}
+		this.clientes.removeConta(currentAccount);
+		this.logout();
 	}
 	
 	public void mostrarCarrinho() {

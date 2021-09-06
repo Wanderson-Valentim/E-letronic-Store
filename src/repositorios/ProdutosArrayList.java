@@ -81,6 +81,11 @@ public class ProdutosArrayList implements IProdutosArrayList{
             throw new ProdutoInexistenteException();
         }
     }
+    
+    public void aumentarQuantidade(String name, int quantidade) throws ProdutoInexistenteException {
+    	Produto p = this.consultaProdutoNomeProduto(name);
+    	p.setQuantidade(quantidade);
+    }
 
     public ArrayList<Produto> procuraProduto(String str) throws ProdutoInexistenteException {
       ArrayList<Produto> listaFiltrada = new ArrayList<Produto>() ;

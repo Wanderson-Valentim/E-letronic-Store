@@ -55,7 +55,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Alterar Email" textFill="WHITE" GridPane.columnIndex="2">
+                  <Button mnemonicParsing="false" onAction="#trocarEmail" style="-fx-background-color: #900fd6;" text="Alterar Email" textFill="WHITE" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
@@ -63,7 +63,7 @@
                         <Font name="Roboto Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #900fd6;" text="Alterar Endereço" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button mnemonicParsing="false" onAction="#trocarEndereco" style="-fx-background-color: #900fd6;" text="Alterar Endereço" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="5.0" />
                      </GridPane.margin>
@@ -99,7 +99,7 @@
                         <Font name="Roboto Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #900fd6;" text="Excluir Conta" textFill="WHITE" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onAction="#excluirConta" prefHeight="40.0" prefWidth="130.0" style="-fx-background-color: #900fd6;" text="Excluir Conta" textFill="WHITE" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="40.0" />
                      </GridPane.margin>

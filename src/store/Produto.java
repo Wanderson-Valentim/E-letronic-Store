@@ -39,7 +39,7 @@ public class Produto {
 		return this.preco;
 	}
 
-	public float getQuantidade(){
+	public int getQuantidade(){
 		return this.quantidade;
 	}
 
@@ -49,6 +49,15 @@ public class Produto {
 
 	public void setPreco(int novoPreco){
 		this.preco = novoPreco;
+	}
+	
+	public void setQuantidade(int quantidade) {
+		if(quantidade < 0) {
+			System.out.println("Não é possível adicionar um valor negativo");
+			return;
+		}
+		this.quantidade = quantidade;
+
 	}
 
 }

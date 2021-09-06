@@ -26,4 +26,16 @@ public class ContaGerente extends Conta{
     public void editaPreco(Produto produto, int novoPreco){
         produto.setPreco(novoPreco);
     }
+    
+    public void atualizaEmail(String novoEmail){
+        this.setEmail(novoEmail);
+    }
+
+    public boolean confirmarSenha(String senha) {
+    	return this.ehEssaSenha(senha);
+    }
+
+    public  void atualizaSenha(String novaSenha){
+        this.setSenha(novaSenha);
+    }
 }

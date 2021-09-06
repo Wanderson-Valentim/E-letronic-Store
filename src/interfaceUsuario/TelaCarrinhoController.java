@@ -37,6 +37,7 @@ public class TelaCarrinhoController {
 		Parent root = loader.load();
 		MainController controller = loader.getController();
 		controller.colocarLoja(store);
+		controller.trocarBtnLoginLabel();
 		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
