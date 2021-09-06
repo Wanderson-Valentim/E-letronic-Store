@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import exceptions.ProdutoExisteException;
 import exceptions.ProdutoInexistenteException;
+import interfacesRepositorios.IProdutosArrayList;
 import store.Produto;
 
-public class ProdutosArrayList {
+public class ProdutosArrayList implements IProdutosArrayList{
     private ArrayList<Produto> produtos;
     private int index;
 
