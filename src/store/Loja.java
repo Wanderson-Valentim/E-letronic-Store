@@ -153,8 +153,7 @@ public class Loja {
 	}
 	
 	public ContaCliente pegarConta() {
-		if(isLogged) return this.currentAccount;
-		return null;
+		return this.currentAccount;
 	}
 	
 	public ContaGerente pegarContaGerente() {

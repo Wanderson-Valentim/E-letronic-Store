@@ -22,10 +22,6 @@ public class ContaCliente extends Conta{
         carrinho.removeProduto(produto);
     }
 
-    public void finalizaCompra(){
-        //ainda n sei como fzr
-    }
-
     public void atualizaEmail(String novoEmail){
         this.setEmail(novoEmail);
     }

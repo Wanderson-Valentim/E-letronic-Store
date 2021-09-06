@@ -66,4 +66,15 @@ public class Carrinho {
     public float getTotal(){
         return this.precoTotal;
     }
+
+    public int getQuantidadeTotal() {
+    	int resultado = 0;
+    	for(int i = 0; i < produtos.size(); i++) {
+    		int[] p = produtos.get(i);
+    		
+    		resultado += p[1];
+    	}
+    	
+    	return resultado;
+    }
 }

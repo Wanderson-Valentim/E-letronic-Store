@@ -8,8 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import store.Carrinho;
+import store.ContaCliente;
 import store.Loja;
 
 public class TelaCarrinhoController {
@@ -17,7 +20,7 @@ public class TelaCarrinhoController {
 	private TextField searchBar;
 	
 	@FXML
-	private TextField total;
+	private Label total;
 	
 	private Loja store;
 	private Scene scene;
@@ -25,6 +28,9 @@ public class TelaCarrinhoController {
 	
 	public void colocarLoja(Loja store) {
 		this.store = store;
+		ContaCliente conta = store.pegarConta();
+		Carrinho carrinho = conta.getCarrinho();
+		total.setText(String.valueOf(carrinho.getTotal()));
 	}
 	
 	public void eventoBusca() {
@@ -61,4 +67,22 @@ public class TelaCarrinhoController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	
+	public void trocaParaBoleto(ActionEvent event) throws IOException {
+		if(!this.store.isLogged) {
+			System.out.println("Você não está logado!");
+			return;
+		}
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/interfaceUsuario/telaBoleto.fxml"));
+		Parent root = loader.load();
+		TelaBoletoController controller = loader.getController();
+		controller.colocarStore(store);
+		controller.criarBoleto();
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+
 }
