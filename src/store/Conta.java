@@ -8,7 +8,7 @@ public abstract class Conta {
 	private String endereco;
 	private boolean ehGerente;
 	
-	Conta(String[] data, boolean tipo){
+	public Conta(String[] data, boolean tipo){
 		this.nome = data[0];
 		this.sobrenome = data[1];
 		this.email = data[2];

@@ -1,11 +1,11 @@
 package store;
 
 public class Produto {
-	int id;
-	String nome;
-	String categoria;
-	float preco;
-	int quantidade;
+	private int id;
+	private String nome;
+	private String categoria;
+	private float preco;
+	private int quantidade;
 	
 	Produto(int id, String nome, String categoria, float preco, int quantidade){
 		this.id = id;

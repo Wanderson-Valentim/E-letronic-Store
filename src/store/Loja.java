@@ -13,10 +13,10 @@ import java.io.File;
 public class Loja {
 	private ProdutosArrayList produtos = new ProdutosArrayList();
 	private ContasArrayList clientes = new ContasArrayList();
-	public boolean isLogged = false;
 	private ContaCliente currentAccount;
+	public boolean isLogged = false;
 	
-	Loja() {
+	public Loja() {
 		try {
 			System.out.println("lendo arquivos...");
 			this.lerArquivo("/src/items");
@@ -62,7 +62,7 @@ public class Loja {
 		 }
 	}
 	
-	void addProduto(ArrayList<String> data) {
+	public void addProduto(ArrayList<String> data) {
 		Produto novoP = new Produto(
 				Integer.parseInt(data.get(0)),
 				data.get(1), data.get(2),
@@ -132,7 +132,7 @@ public class Loja {
 			int[] produto = produtos.get(counter);
 			for(int j = 0; j < this.produtos.getProdutos().size(); j++) {
 				Produto p = this.produtos.getProdutos().get(j);
-				if(p.id == produto[0]) {
+				if(p.getId() == produto[0]) {
 					carrinho.add(p);
 				}
 			}
@@ -144,7 +144,7 @@ public class Loja {
 		for(int counter = 0; counter < carrinho.size(); counter++) {
 			Produto p = carrinho.get(counter);
 			int[] data = produtos.get(counter);
-			System.out.println(p.id + " - " + p.nome + " - " + data[1]);
+			System.out.println(p.getId() + " - " + p.getNome() + " - " + data[1]);
 		}
 	}
 }
