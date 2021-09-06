@@ -31,7 +31,6 @@ public class Carrinho {
         return this.produtos;
     }
 
-    //PRECISA SER AJUSTADA
     public void adicionaProduto(Produto produto){
         if(verificaExistecia(produto.getId())){
             int[] vetor = produtos.get(index);

@@ -15,7 +15,7 @@ public class ProdutosArrayList {
         index = 0;
     }
 
-    private boolean verificaExistenciaUsuario(String nome){
+    public boolean verificaExistenciaUsuario(String nome){
         for(int i=0; i < this.produtos.size(); i++){
             String produto = this.produtos.get(i).getNome();
             if(produto.equals(nome)){
@@ -26,7 +26,7 @@ public class ProdutosArrayList {
         return false;
     }
 
-    private boolean verificaExistenciaId(int id){
+    public boolean verificaExistenciaId(int id){
         for(int i=0; i < this.produtos.size(); i++){
             int produto = this.produtos.get(i).getId();
             if(produto == id){
@@ -59,19 +59,7 @@ public class ProdutosArrayList {
         }
     }
 
-    //Não implementada, pq n sei se precisa
-    /*public void atualizaProduto(Produto produto) throws ProdutoInexistenteException{
-        boolean produtoExiste = verificaExistenciaUsuario(produto.getNome());
-
-        if(produtoExiste){
-            
-        }
-        else{
-            throw new ProdutoInexistenteException();
-        }
-    }*/
-
-    Produto consultaProdutoNomeProduto(String nome) throws ProdutoInexistenteException{
+    public Produto consultaProdutoNomeProduto(String nome) throws ProdutoInexistenteException{
         boolean produtoExiste = verificaExistenciaUsuario(nome);
 
         if(produtoExiste){
@@ -82,7 +70,7 @@ public class ProdutosArrayList {
         }
     }
 
-    Produto consultaProdutoId(int id) throws ProdutoInexistenteException{
+    public Produto consultaProdutoId(int id) throws ProdutoInexistenteException{
         boolean produtoExiste = verificaExistenciaId(id);
 
         if(produtoExiste){
